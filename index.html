@@ -9,7 +9,7 @@
     </head>
     <body>
         <section class="header">
-            <h1>Big Wheel Gaming's eBay Tool</h1>
+            <h1>Big Wheel Gaming's <br />eBay Tool</h1>
             <p>
                 Enter the cost of the game including shipping and it's value.
                 The tool will apply sales tax on the purchase, apply final sale
@@ -55,6 +55,11 @@
                 fee -
                 price
             ).toFixed(2)}`;
+            if (value - fee - price < 0) {
+                profitContainer.style.color = "red";
+            } else {
+                profitContainer.style.color = "green";
+            }
         }
     </script>
 </html>
