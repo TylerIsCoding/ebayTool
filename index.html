@@ -1,0 +1,60 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="normalize.css" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="/assets/icon.png" />
+        <title>Big Wheel Gaming - eBay Tool</title>
+    </head>
+    <body>
+        <section class="header">
+            <h1>Big Wheel Gaming's eBay Tool</h1>
+            <p>
+                Enter the cost of the game including shipping and it's value.
+                The tool will apply sales tax on the purchase, apply final sale
+                eBay fees, and then output the potential profit.
+            </p>
+        </section>
+        <section class="inputs">
+            <label for="base-price"
+                >Price
+                <input id="base-price" type="number" />
+            </label>
+            <label for="shipping"
+                >Shipping
+                <input id="shipping" type="number" />
+            </label>
+            <label for="value"
+                >Potential Value <input id="value" type="number"
+            /></label>
+            <button onClick="calculate()">Calculate</button>
+        </section>
+        <section class="outputs">
+            <h2 id="ebay-fee">Ebay fee: $0.00</h2>
+            <h2 id="final-profit">Final profit: $0.00</h2>
+        </section>
+    </body>
+    <script>
+        function calculate() {
+            const basePrice = Number(
+                document.getElementById("base-price").value || 0
+            );
+            const shipping = Number(
+                document.getElementById("shipping").value || 0
+            );
+            const value = Number(document.getElementById("value").value || 0);
+            const profitContainer = document.getElementById("final-profit");
+            const feeContainer = document.getElementById("ebay-fee");
+            const tax = Number(0.0624);
+            const price = basePrice + basePrice * tax + shipping;
+            const fee = Number(value * 0.1325);
+            feeContainer.innerText = `Ebay fee: $${fee.toFixed(2)}`;
+            profitContainer.innerText = `Final profit: $${(
+                value -
+                fee -
+                price
+            ).toFixed(2)}`;
+        }
+    </script>
+</html>
